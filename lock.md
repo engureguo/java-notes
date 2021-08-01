@@ -54,5 +54,74 @@ public void test2() {
 }
 ```
 
+### 自旋锁 spinlock
+
+是指尝试获取锁的线程不会立即阻塞, 而是采用循环的方式去尝试获取锁, 这样的好处是**减少线程上下文切换的消耗**, 缺点是循环会消耗CPU
+
+Unsafe类
+```java
+public final int getAndAddInt(Object var1, long var2, int var4) {
+    int var5;
+    do {
+        var5 = this.getIntVolatile(var1, var2);
+    } while(!this.compareAndSwapInt(var1, var2, var5, var5 + var4));
+
+    return var5;
+}
+```
+
+实现一个简单的自旋锁：
+```java
+/**
+ * 手写一个自旋锁
+ */
+public class MyCASLock {
+
+    private static AtomicReference<Thread> atomicReference = new AtomicReference<>();//默认引用为null（Thread类型）
+
+    public static void getLock() {
+        Thread curThread = Thread.currentThread();
+        System.out.println(curThread.getName() + " 尝试获取锁");
+        while (!atomicReference.compareAndSet(null, curThread)) {
+
+        }
+        System.out.println(curThread.getName() + " 拿到了锁");
+    }
+
+    public static void releaseLock() {
+        atomicReference.compareAndSet(Thread.currentThread(), null);
+        System.out.println(Thread.currentThread().getName() + " 释放了锁");
+    }
+
+    public static void main(String[] args) {
+
+        for (int i = 0; i < 10; i++) {  //10个线程去抢占一把锁
+
+            new Thread(() -> {
+                getLock();
+
+                // 模拟业务
+                try {
+                    Thread.sleep(10);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                releaseLock();
+            }, "thread-" + i).start();
+
+        }
+
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
+}
+```
+
+
 
 
