@@ -1,8 +1,7 @@
 package com.engure.collection.list;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import org.junit.Test;
+import java.util.*;
 
 public class Demo1 {
     public static void main(String[] args) {
@@ -21,6 +20,36 @@ public class Demo1 {
 
     // java.util.ConcurrentModificationException
 
+    @Test
+    public void test2() {
+        List<Integer> list = new Vector<>(); // List接口
 
+        for (int i = 0; i < 30; i++) {
+            new Thread(()->{
+                for (int j=0; j<10; j++) {
+                    list.add(new Random(System.currentTimeMillis()).nextInt());
+                    System.out.println(list);
+                }
+            }).start();
+        }
+    }
+
+    @Test
+    public void test3() {
+        List<String> list = Collections.synchronizedList(new ArrayList<>());
+
+        for (int i = 0; i < 30; i++) {
+            new Thread(()->{
+                list.add(UUID.randomUUID().toString().substring(0, 8));
+                System.out.println(list);
+            }).start();
+        }
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
 }
