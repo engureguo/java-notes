@@ -13,4 +13,38 @@ public class Demo1 {
 //         非公平锁吞吐量更大，性能好，缺点是会产生饥饿
 //         synchronized 是一种非公平锁
     }
+
+    public void test1() {
+
+        synchronized (this) {
+            //...
+            synchronized (this) { // 进入内层方法会自动获得锁
+                //....
+            }
+        }
+
+    }
+
+    public void test2() {
+        ReentrantLock lock = new ReentrantLock();
+        // 注意，lock和unlock的执行次数要保证相同！ 申请数 = 释放数
+
+        lock.lock();
+        try {
+
+            lock.lock();
+            try {
+
+            } finally {
+                lock.unlock();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } {
+            lock.unlock();
+        }
+
+    }
+
 }
