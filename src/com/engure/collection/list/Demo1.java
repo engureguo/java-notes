@@ -5,6 +5,9 @@ import org.junit.Test;
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+/**
+ * 线程安全问题
+ */
 public class Demo1 {
     public static void main(String[] args) {
         List<Integer> list = new ArrayList<>();
@@ -65,6 +68,8 @@ public class Demo1 {
                 System.out.println(list);
             }).start();
         }
+
+        list.get(0);
 
         try {
             Thread.sleep(2000);
