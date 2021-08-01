@@ -47,7 +47,7 @@ public void test2() {
 
     } catch (Exception e) {
         e.printStackTrace();
-    } {
+    } finally {
         lock.unlock();
     }
 
