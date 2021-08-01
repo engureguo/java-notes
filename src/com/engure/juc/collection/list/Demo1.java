@@ -1,4 +1,4 @@
-package com.engure.collection.list;
+package com.engure.juc.collection.list;
 
 import org.junit.Test;
 

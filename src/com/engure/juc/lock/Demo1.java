@@ -1,4 +1,4 @@
-package com.engure.lock;
+package com.engure.juc.lock;
 
 
 import java.util.concurrent.locks.ReentrantLock;

@@ -1,6 +1,5 @@
-package com.engure.atomic;
+package com.engure.juc.atomic;
 
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicReference;
 
 /**
