@@ -15,5 +15,15 @@ public class T33 {
     public void t1() {
         String s = new String();
         System.out.println(s);
+
     }
+
+    public void t() {
+        try {
+            Class.forName(""); // 原理：反射
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

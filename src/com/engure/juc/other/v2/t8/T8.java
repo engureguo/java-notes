@@ -7,7 +7,11 @@ public class T8 {
     public static int a = 0;
     public static int b = 0;
 
-
+    /**
+     * 指令重排验证
+     * @param args
+     * @throws InterruptedException
+     */
     public static void main(String[] args) throws InterruptedException {
 
         for (int i=0; true; i++) {
