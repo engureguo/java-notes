@@ -1,7 +1,5 @@
 package com.engure.juc.other.v2.t7;
 
-import lombok.Data;
-
 import java.util.concurrent.TimeUnit;
 
 public class T7 {

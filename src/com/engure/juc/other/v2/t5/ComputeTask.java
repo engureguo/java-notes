@@ -1,6 +1,6 @@
 package com.engure.juc.other.v2.t5;
 
-import java.util.concurrent.*;
+import java.util.concurrent.RecursiveTask;
 
 public class ComputeTask extends RecursiveTask<Long> {
 
