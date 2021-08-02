@@ -11,3 +11,7 @@ public class PCDemo3 {
 
     }
 }
+
+class MyData {
+
+}
