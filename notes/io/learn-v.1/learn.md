@@ -1,8 +1,8 @@
 
 # version - 1 
 
-https://www.bilibili.com/video/BV1mA411q7Ry?p=8
-https://www.bilibili.com/video/BV1Rq4y1s7uu
+- https://www.bilibili.com/video/BV1mA411q7Ry?p=8
+- https://www.bilibili.com/video/BV1Rq4y1s7uu
 
 # notes
 
